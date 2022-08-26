@@ -37,9 +37,11 @@ import com.google.android.gms.location.LocationResult
 
 import com.google.android.gms.location.LocationCallback
 import learn.cm.latestnewsapp.database.data.datastore.PreferenceUtils
+import learn.cm.latestnewsapp.database.remote.ApiInterface
 import learn.cm.latestnewsapp.presentation.MainActivity
 import learn.cm.latestnewsapp.presentation.news_detail.NewsDetailWebViewActivity
 import learn.cm.latestnewsapp.util.Constants
+import learn.cm.latestnewsapp.util.DRK
 import java.util.*
 
 
@@ -47,6 +49,9 @@ private  const val  PERMISSION_ID = 44
 
 class HomeActivity : AppCompatActivity(), NewsAdapter.Companion.OnItemClickListener {
 
+    init {
+        System.loadLibrary("native-lib")
+    }
     lateinit var binding: ActivityHomeBinding
     lateinit var viewModel: HomeViewModel
     private lateinit var adapter: NewsAdapter

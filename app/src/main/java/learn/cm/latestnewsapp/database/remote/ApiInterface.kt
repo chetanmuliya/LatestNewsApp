@@ -1,6 +1,7 @@
 package learn.cm.latestnewsapp.database.remote
 
 import learn.cm.latestnewsapp.database.remote.model.NewsResponse
+import learn.cm.latestnewsapp.util.GenericProvider
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -22,7 +23,6 @@ interface ApiInterface {
     ) : Call<NewsResponse>
 
     companion object {
-
         var BASE_URL = "https://google-news1.p.rapidapi.com"
 
         private val client = OkHttpClient.Builder().apply {
@@ -45,7 +45,7 @@ interface ApiInterface {
                 val req = chain.request()
                     .newBuilder()
                     .addHeader("Content-Type","application/json")
-                    .addHeader("X-RapidAPI-Key","283edac266mshbb7e646fd9567d7p163594jsnf436129fd1df")
+                    .addHeader("X-RapidAPI-Key",GenericProvider.getRapidApiKey())
                     .build()
 
                 return chain.proceed(req)
